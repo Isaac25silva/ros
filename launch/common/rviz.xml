@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="config" default=""/>
+
+  <node args="-d $(find learning_ros)/config/rviz/$(arg config).rviz" name="rviz" pkg="rviz" type="rviz" respawn="true"/>
+
+</launch>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="map" default="map_2"/>
+
+  <!-- rviz -->
+  <include file="$(find learning_ros)/launch/common/rviz.xml" >
+    <arg name="config" default="teleop_follow"/>
+  </include>
+
+  <!-- gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  
+  <!-- load robot -->
+  <include file="$(find learning_ros)/launch/common/robot.xml" />
+
+  <!-- load map -->
+  <include file="$(find learning_ros)/launch/common/map.xml" >
+    <arg name="map" default="$(arg map)"/>
+  </include>
+
+  <!-- load environment -->
+  <include file="$(find learning_ros)/launch/common/environment.xml" >
+    <arg name="map" default="$(arg map)"/>  
+  </include>
+
+
+<group ns="robot2" >
+  <!-- load robot -->
+  <include file="$(find learning_ros)/launch/common/robot.xml" >
+    <arg name="robot" default="robot2"/>
+    <arg name="init_pos_x" default="1.0"/>
+    <arg name="init_pos_y" default="-4.0"/>
+    <arg name="init_pos_z" default="0.0"/>
+  </include>
+  <!-- teleop -->
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" launch-prefix="xterm -title teleop -hold -e" />
+
+</group>
+
+
+</launch>

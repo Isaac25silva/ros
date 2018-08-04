@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="map" default=""/>  
+  
+  <!-- load environment -->
+  <group ns="environment">
+    <param name="robot_description" command="$(find xacro)/xacro.py $(find learning_ros)/maps/$(arg map)/map.sdf" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_robot" respawn="false" output="screen"
+      args="-param robot_description
+            -sdf
+            -model $(arg map)">
+    </node>
+  </group>
+
+</launch>

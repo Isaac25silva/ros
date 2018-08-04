@@ -1,0 +1,17 @@
+<launch>
+
+    <arg name="cmd_vel" default="cmd_vel"/>
+
+    <node name="move_base" output="screen" pkg="move_base" respawn="true" type="move_base">
+
+		<remap from="cmd_vel" to="$(arg cmd_vel)" />
+        
+        <rosparam command="load" file="$(find learning_ros)/config/move_base/costmap_common_params.yaml" ns="global_costmap"/>
+        <rosparam command="load" file="$(find learning_ros)/config/move_base/costmap_common_params.yaml" ns="local_costmap"/>
+        <rosparam command="load" file="$(find learning_ros)/config/move_base/base_local_planner_params.yaml"/>
+        <rosparam command="load" file="$(find learning_ros)/config/move_base/local_costmap_params.yaml"/>
+        <rosparam command="load" file="$(find learning_ros)/config/move_base/global_costmap_params.yaml"/>
+        
+    </node>
+
+</launch>

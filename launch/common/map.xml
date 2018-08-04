@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="map" default=""/>  
+
+  <node args="$(find learning_ros)/maps/$(arg map)/map.yaml" name="map_server" output="screen" pkg="map_server" type="map_server" />
+
+</launch>

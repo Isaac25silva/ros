@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- rviz -->
+  <include file="$(find learning_ros)/launch/common/rviz.xml" >
+    <arg name="config" default="teleop_free"/>
+  </include>
+
+  <!-- gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+  
+  <!-- load robot -->
+  <include file="$(find learning_ros)/launch/common/robot.xml" />
+
+</launch>
